@@ -391,6 +391,12 @@
     "OFox Upstream Vendor Help": "Welcher Upstream-Anbieter die OFox-Videogenerierung bedient. BytePlus (international) ist der Standard mit einheitlicher Inhaltsrichtlinie; Volcano Engine ist der Festland-China-Anbieter; Auto lässt das OFox-Gateway die Last über die Anbieter verteilen.",
     "OFox Vendor BytePlus": "BytePlus (international, Standard)",
     "OFox Vendor Volcengine": "Volcano Engine (Festlandchina)",
-    "OFox Vendor Auto": "Auto (Gateway-Lastverteilung)"
+    "OFox Vendor Auto": "Auto (Gateway-Lastverteilung)",
+    "Facebook Graph API Direct Publishing": "Facebook Graph API Direct Publishing",
+    "Enable Facebook Direct Auto-Publish": "Enable Facebook Direct Auto-Publish",
+    "Facebook Page ID": "Facebook Page ID",
+    "Facebook Page ID Help": "Your numeric Facebook Page ID (e.g. 100012345678901)",
+    "Facebook Page Access Token": "Facebook Page Access Token",
+    "Facebook Page Access Token Help": "Page Access Token from Meta Developer App with pages_manage_posts and pages_read_engagement permissions"
   }
 }

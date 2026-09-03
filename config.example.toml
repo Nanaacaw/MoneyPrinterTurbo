@@ -441,6 +441,13 @@ upload_post_youtube_privacy_status = "public"
 # Cross-post jobs run in the current process and are not resumed after restart.
 upload_post_max_pending_tasks = 10
 
+# Facebook Graph API Video Publishing (Direct Page Video/Reel Upload)
+# API documentation: https://developers.facebook.com/docs/video-api/guides/publishing
+facebook_enabled = false
+facebook_page_id = ""
+facebook_access_token = ""
+facebook_auto_upload = false
+
 # =============================================================================
 # Whisper Subtitles / Whisper 字幕
 # =============================================================================

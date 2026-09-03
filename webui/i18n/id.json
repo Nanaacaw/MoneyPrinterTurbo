@@ -391,6 +391,12 @@
     "OFox Upstream Vendor Help": "Vendor upstream yang melayani pembuatan video OFox. BytePlus (internasional) adalah bawaan dengan kebijakan konten yang konsisten; Volcano Engine adalah vendor Tiongkok daratan; Auto membiarkan gateway OFox menyeimbangkan beban antar vendor.",
     "OFox Vendor BytePlus": "BytePlus (internasional, bawaan)",
     "OFox Vendor Volcengine": "Volcano Engine (Tiongkok daratan)",
-    "OFox Vendor Auto": "Otomatis (penyeimbangan gateway)"
+    "OFox Vendor Auto": "Otomatis (penyeimbangan gateway)",
+    "Facebook Graph API Direct Publishing": "Publikasi Langsung Facebook Graph API",
+    "Enable Facebook Direct Auto-Publish": "Aktifkan Publikasi Otomatis Facebook",
+    "Facebook Page ID": "ID Halaman Facebook",
+    "Facebook Page ID Help": "ID numerik Halaman Facebook Anda (misal 100012345678901)",
+    "Facebook Page Access Token": "Access Token Halaman Facebook",
+    "Facebook Page Access Token Help": "Page Access Token dari Meta Developer App dengan izin pages_manage_posts dan pages_read_engagement"
   }
 }

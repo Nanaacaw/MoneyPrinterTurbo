@@ -391,6 +391,12 @@
     "OFox Upstream Vendor Help": "OFox video üretimini hangi üst akış sağlayıcısının sunacağı. BytePlus (uluslararası) tutarlı içerik politikasıyla varsayılandır; Volcano Engine Çin anakarası sağlayıcısıdır; Otomatik, OFox ağ geçidinin yükü sağlayıcılar arasında dengelemesine izin verir.",
     "OFox Vendor BytePlus": "BytePlus (uluslararası, varsayılan)",
     "OFox Vendor Volcengine": "Volcano Engine (Çin anakarası)",
-    "OFox Vendor Auto": "Otomatik (ağ geçidi yük dengeleme)"
+    "OFox Vendor Auto": "Otomatik (ağ geçidi yük dengeleme)",
+    "Facebook Graph API Direct Publishing": "Facebook Graph API Direct Publishing",
+    "Enable Facebook Direct Auto-Publish": "Enable Facebook Direct Auto-Publish",
+    "Facebook Page ID": "Facebook Page ID",
+    "Facebook Page ID Help": "Your numeric Facebook Page ID (e.g. 100012345678901)",
+    "Facebook Page Access Token": "Facebook Page Access Token",
+    "Facebook Page Access Token Help": "Page Access Token from Meta Developer App with pages_manage_posts and pages_read_engagement permissions"
   }
 }

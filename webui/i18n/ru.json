@@ -391,6 +391,12 @@
     "OFox Upstream Vendor Help": "Какой вышестоящий поставщик обслуживает генерацию видео OFox. BytePlus (международный) — значение по умолчанию с единой контентной политикой; Volcano Engine — поставщик материкового Китая; Авто — шлюз OFox сам распределяет нагрузку между поставщиками.",
     "OFox Vendor BytePlus": "BytePlus (международный, по умолчанию)",
     "OFox Vendor Volcengine": "Volcano Engine (материковый Китай)",
-    "OFox Vendor Auto": "Авто (балансировка шлюзом)"
+    "OFox Vendor Auto": "Авто (балансировка шлюзом)",
+    "Facebook Graph API Direct Publishing": "Facebook Graph API Direct Publishing",
+    "Enable Facebook Direct Auto-Publish": "Enable Facebook Direct Auto-Publish",
+    "Facebook Page ID": "Facebook Page ID",
+    "Facebook Page ID Help": "Your numeric Facebook Page ID (e.g. 100012345678901)",
+    "Facebook Page Access Token": "Facebook Page Access Token",
+    "Facebook Page Access Token Help": "Page Access Token from Meta Developer App with pages_manage_posts and pages_read_engagement permissions"
   }
 }

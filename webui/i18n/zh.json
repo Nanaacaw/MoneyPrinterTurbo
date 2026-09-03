@@ -476,6 +476,12 @@
     "OFox Upstream Vendor Help": "OFox 视频生成使用的上游厂商。BytePlus（国际）为默认值，内容政策一致；火山引擎为大陆厂商；自动分发由 OFox 网关按权重在可用厂商间调度。",
     "OFox Vendor BytePlus": "BytePlus（国际，默认）",
     "OFox Vendor Volcengine": "火山引擎（中国大陆）",
-    "OFox Vendor Auto": "自动分发（网关调度）"
+    "OFox Vendor Auto": "自动分发（网关调度）",
+    "Facebook Graph API Direct Publishing": "Facebook Graph API 直接发布",
+    "Enable Facebook Direct Auto-Publish": "开启 Facebook 自动发布",
+    "Facebook Page ID": "Facebook 主页 ID",
+    "Facebook Page ID Help": "您的数字 Facebook 主页 ID（例如 100012345678901）",
+    "Facebook Page Access Token": "Facebook 主页访问令牌 (Page Access Token)",
+    "Facebook Page Access Token Help": "来自 Meta Developer App 的 Page Access Token，需具备 pages_manage_posts 和 pages_read_engagement 权限"
   }
 }

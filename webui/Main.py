@@ -225,7 +225,7 @@ CREDENTIAL_COMPANION_KEYS = {
 }
 
 NON_LLM_COMPANION_KEYS = {
-    "app": ("upload_post_username",)
+    "app": ("upload_post_username", "facebook_page_id")
 }
 # 同一个密钥在不同面板可能使用各自的控件 key：音频面板直接编辑 Gemini 和
 # MiMo 的 LLM 密钥。恢复备份时必须清除每一个别名，否则遗留的旧值
@@ -2943,7 +2943,7 @@ def _render_settings_dialog():
 
             upload_post_platforms = st.multiselect(
                 tr("Platforms"),
-                options=["tiktok", "instagram", "youtube"],
+                options=["tiktok", "instagram", "youtube", "facebook"],
                 default=config.app.get("upload_post_platforms", ["tiktok", "instagram"]),
                 help="Select platforms to publish to",
                 key="upload_post_platforms_multiselect"
@@ -2965,6 +2965,40 @@ def _render_settings_dialog():
                 if upload_post_youtube_privacy_status != config.app.get("upload_post_youtube_privacy_status", "public"):
                     _set_runtime_config("app", "upload_post_youtube_privacy_status", upload_post_youtube_privacy_status)
 
+
+            st.divider()
+            st.write(tr("Facebook Graph API Direct Publishing"))
+            fb_is_enabled = config.app.get("facebook_enabled", False)
+            fb_is_auto = config.app.get("facebook_auto_upload", False)
+            fb_ui_state = fb_is_enabled and fb_is_auto
+
+            fb_enabled = st.checkbox(
+                tr("Enable Facebook Direct Auto-Publish"),
+                value=fb_ui_state,
+                key="facebook_enabled_checkbox"
+            )
+            if fb_enabled != fb_is_enabled or fb_enabled != fb_is_auto:
+                _set_runtime_config("app", "facebook_enabled", fb_enabled)
+                _set_runtime_config("app", "facebook_auto_upload", fb_enabled)
+
+            fb_page_id = st.text_input(
+                tr("Facebook Page ID"),
+                value=config.app.get("facebook_page_id", ""),
+                help=tr("Facebook Page ID Help"),
+                key="facebook_page_id_input"
+            )
+            if fb_page_id != config.app.get("facebook_page_id", ""):
+                _set_runtime_config("app", "facebook_page_id", fb_page_id)
+
+            fb_access_token = st.text_input(
+                tr("Facebook Page Access Token"),
+                value=config.app.get("facebook_access_token", ""),
+                type="password",
+                help=tr("Facebook Page Access Token Help"),
+                key="facebook_access_token_input"
+            )
+            if fb_access_token != config.app.get("facebook_access_token", ""):
+                _set_runtime_config("app", "facebook_access_token", fb_access_token)
         # 左侧面板 - 日志设置
         with left_config_panel:
             hide_log = st.checkbox(

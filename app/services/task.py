@@ -30,7 +30,7 @@ from app.services import (
     volcengine_seedance,
     voice,
 )
-from app.services import upload_post
+from app.services import facebook, upload_post
 from app.services import state as sm
 from app.utils import file_security, utils
 
@@ -1111,19 +1111,33 @@ def _run_cross_post(
             )
 
         for video_path in video_paths:
-            result = upload_post.cross_post_video(
-                video_path=video_path,
-                title=post_title,
-                platforms=list(platforms),
-                youtube_extra=youtube_extra,
-            )
-            if not isinstance(result, dict):
-                result = {
-                    "success": False,
-                    "error": "Upload-Post returned an invalid response",
-                }
-            results.append(result)
+            if platforms:
+                result = upload_post.cross_post_video(
+                    video_path=video_path,
+                    title=post_title,
+                    platforms=list(platforms),
+                    youtube_extra=youtube_extra,
+                )
+                if not isinstance(result, dict):
+                    result = {
+                        "success": False,
+                        "error": "Upload-Post returned an invalid response",
+                    }
+                results.append(result)
 
+            if facebook.facebook_service.is_configured() and facebook.facebook_service.auto_upload:
+                fb_result = facebook.post_facebook_video(
+                    video_path=video_path,
+                    title=metadata.get("title") or video_subject or post_title,
+                    description=post_title,
+                )
+                if not isinstance(fb_result, dict):
+                    fb_result = {
+                        "success": False,
+                        "platform": "facebook",
+                        "error": "Facebook returned an invalid response",
+                    }
+                results.append(fb_result)
         failures = [result for result in results if not result.get("success")]
         if failures:
             error_messages = [
@@ -1518,15 +1532,19 @@ def _run_pipeline(
 
     # 7. 先完成视频生成任务，再按需提交跨平台发布。第三方上传可能耗时
     # 数分钟，不应阻塞视频结果返回，也不能反向影响已经生成的成片。
-    cross_post_enabled = (
+    upload_post_enabled = (
         upload_post.upload_post_service.is_configured()
         and upload_post.upload_post_service.auto_upload
     )
-    platforms = (
-        list(upload_post.upload_post_service.platforms) if cross_post_enabled else []
+    upload_post_platforms = (
+        list(upload_post.upload_post_service.platforms) if upload_post_enabled else []
     )
-    should_cross_post = cross_post_enabled and bool(platforms)
-    if cross_post_enabled and not platforms:
+    facebook_enabled = (
+        facebook.facebook_service.is_configured()
+        and facebook.facebook_service.auto_upload
+    )
+    should_cross_post = (upload_post_enabled and bool(upload_post_platforms)) or facebook_enabled
+    if upload_post_enabled and not upload_post_platforms and not facebook_enabled:
         logger.warning(
             f"skip cross-post because no platforms are configured, task_id: {task_id}"
         )
@@ -1557,7 +1575,7 @@ def _run_pipeline(
             video_paths=final_video_paths,
             params=params,
             video_script=video_script,
-            platforms=platforms,
+            platforms=upload_post_platforms,
             youtube_privacy_status=(
                 upload_post.upload_post_service.youtube_privacy_status
             ),
